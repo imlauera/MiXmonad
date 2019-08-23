@@ -1,0 +1,20 @@
+# ~/.conkyrc
+# Thayer Williams - http://cinderwick.ca
+# vim:nu:ai:si:et:ts=4:sw=4:ft=conkyrc:
+
+background no
+out_to_x no
+out_to_console yes
+update_interval 3
+total_run_times 0
+use_spacer none
+
+# temp, loadavg, cpu usage, cpu freq, battery, network (click launches wicd), date
+
+TEXT
+^fg(\#7df9ff)${hwmon temp 1}°^fg()  \
+^fg(\#89cff0)${loadavg 1}^fg()  \
+^fg(\#ffffff)${cpu cpu1}%^fg()   ^fg(\#fafca1)${freq_g 1}GHz^fg()   \
+^fg(\#2e8b57)${mem}^fg()   \
+^fg(\#ff3a5f)${uptime}^fg() \
+^fg(\#76dfef)${time %b %d %H:%M}^fg() \
