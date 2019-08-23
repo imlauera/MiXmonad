@@ -1,1 +1,1 @@
-[new](new.png)
+![new](new.png)
