@@ -12,9 +12,8 @@ use_spacer none
 # temp, loadavg, cpu usage, cpu freq, battery, network (click launches wicd), date
 
 TEXT
-^fg(\#7df9ff)${hwmon temp 1}°^fg()  \
-^fg(\#89cff0)${loadavg 1}^fg()  \
-^fg(\#ffffff)${cpu cpu1}%^fg()   ^fg(\#fafca1)${freq_g 1}GHz^fg()   \
-^fg(\#2e8b57)${mem}^fg()   \
-^fg(\#ff3a5f)${uptime}^fg() \
-^fg(\#76dfef)${time %b %d %H:%M}^fg() \
+^fg(\#219dcd)${loadavg 1}^fg()  \
+^fg(\#219dcd)${cpu cpu1}%^fg()   ^fg(\#219dcd)${freq_g 1}GHz^fg()   \
+^fg(\#E0E3FF)${mem}^fg()   \
+^fg(\#7aa5b7)${uptime}^fg() \
+^fg(\#ffd500)${time %b %d %H:%M}^fg() \

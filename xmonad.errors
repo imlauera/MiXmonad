@@ -1,0 +1,15 @@
+
+xmonad.hs:53:31: warning: [-Wdeprecations]
+    In the use of ‘defaultConfig’
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+   |
+53 |         xmonad $ ewmh $ docks defaultConfig 
+   |                               ^^^^^^^^^^^^^
+
+xmonad.hs:62:28: warning: [-Wdeprecations]
+    In the use of ‘smartSpacing’ (imported from XMonad.Layout.Spacing):
+    Deprecated: "Use spacingRaw instead."
+   |
+62 |             , layoutHook = smartSpacing 4 $ myLayoutHook
+   |                            ^^^^^^^^^^^^

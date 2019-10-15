@@ -36,11 +36,14 @@ import qualified XMonad.StackSet as W   -- manageHook rules
 myStartupHook :: X ()
 myStartupHook = do
   spawn "killall stalonetray ; stalonetray -c /home/nist778/.stalonetrayrc"
-  --spawn "feh --bg-fil /home/nist778/wallpaper/waves.png &"
-  spawn "feh --bg-fil /home/nist778/wallpaper/orange.jpg &"
+  -- spawn "feh --bg-fil /home/nist778/wallpaper/nicce.jpg &"
+  -- spawn "feh --bg-fil /home/nist778/Imágenes/alta.jpg &"
+  -- spawn "feh --bg-fil /home/nist778/wallpaper/keyboard.jpg &"
+  spawn "feh --bg-fil /home/nist778/wallpaper/bluew.jpg &"
+  --spawn "feh --bg-fil /home/nist778/Pictures/splash_photos/waves.jpg &"
   -- spawn "splash &"
   spawn "xcompmgr &" -- Podés usar compton es más pesado
-  spawn "pamac-tray & "
+  -- spawn "pamac-tray & "
   spawn "nm-applet &"
 
 
@@ -49,14 +52,15 @@ main = do
         conky <- spawnPipe myDzenConky    -- xmonad status on the left
         xmonad $ ewmh $ docks defaultConfig 
             { modMask            = mod4Mask
-            , terminal           = "terminator"
-            , borderWidth        = 5 
-            , normalBorderColor  = "#ddd"
-            , focusedBorderColor = "#fc4e2a"
+            , terminal           = "xfce4-terminal"
+            , borderWidth        = 2
+            , normalBorderColor  = "#eee"
+            , focusedBorderColor = "#ff41fb"
             , handleEventHook    = fullscreenEventHook <+>
                                    handleEventHook def
             , workspaces = ["1","2","3","4","5"]
-            , layoutHook = smartSpacing 5 $  myLayoutHook
+            , layoutHook = smartSpacing 4 $ myLayoutHook
+            -- , manageHook = manageDocks   <+> doCenterFloat <+> myManageHook
             , manageHook = manageDocks   <+> myManageHook
             , startupHook = myStartupHook <+> setFullscreenSupported
             , logHook    = myLogHook status
@@ -90,8 +94,8 @@ myManageHook = composeAll
     , className =? "Android-Studio" --> doF(W.shift "3")
     , className =? "Thunderbird"    --> doF (W.shift "4")
     , className =? "XCalc"          --> doFloat
+    , className =? "Minecraft"      --> doFloat
     , className =? "Chromium"       --> doShift "2"
-    , className =? "Firefox"        --> doShift "2"
     , className =? "Thunar"         --> doFloat 
     , className =? "Gimp"           --> doF (W.shift "3") 
     ]
@@ -124,18 +128,18 @@ myLogHook h = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn h }
 
 myDzenStatus = "dzen2 -w '320' -ta 'l'" ++ myDzenStyle
 myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -ta 'r'" ++ myDzenStyle
-myDzenStyle  = " -h '25' -bg '#000' -fn 'ubuntu:regular:size=11'"
+myDzenStyle  = " -h '20' -bg '#031318' -fn 'ubuntu:regular:size=11'"
 
 myDzenPP  = dzenPP
-    { ppCurrent = dzenColor "#FF8C00" "" . wrap "<" ">"  
+    { ppCurrent = dzenColor "#7478e6" "" . wrap "<" ">"  
     , ppHidden  = dzenColor "#fff" "" . wrap " " " "
-    , ppHiddenNoWindows = dzenColor "#777777" "" . wrap " " " "
+    , ppHiddenNoWindows = dzenColor "#a6a6a6" "" . wrap " " " "
     , ppUrgent  = dzenColor "#ff0000" "" . wrap " " " "
     , ppSep     = "     "
     , ppLayout  = dzenColor "#aaaaaa" "" . wrap "^ca(1,xdotool key super+space)· " " ·^ca()"
     , ppTitle   = dzenColor "#ffffff" "" 
                     . wrap "^ca(1,xdotool key super+k)^ca(2,xdotool key super+shift+c)"
-                           "                          ^ca()^ca()" . shorten 20 . dzenEscape
+                           "                          ^ca()^ca()" . shorten 40 . dzenEscape
     }
 
 -- Key bindings
