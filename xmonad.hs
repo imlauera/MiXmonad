@@ -35,15 +35,10 @@ import qualified XMonad.StackSet as W   -- manageHook rules
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "killall stalonetray ; stalonetray -c /home/nist778/.stalonetrayrc"
-  -- spawn "feh --bg-fil /home/nist778/wallpaper/nicce.jpg &"
-  -- spawn "feh --bg-fil /home/nist778/Imágenes/alta.jpg &"
-  -- spawn "feh --bg-fil /home/nist778/wallpaper/keyboard.jpg &"
-  spawn "feh --bg-fil /home/nist778/wallpaper/bluew.jpg &"
-  --spawn "feh --bg-fil /home/nist778/Pictures/splash_photos/waves.jpg &"
-  -- spawn "splash &"
+  spawn "killall stalonetray ; stalonetray -c /home/nist778/.xmonad/.stalonetrayrc"
+  spawn "feh --bg-fil /home/nist778/background/new.png &"
+  spawn "feh --bg-fil /usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png &"
   spawn "xcompmgr &" -- Podés usar compton es más pesado
-  -- spawn "pamac-tray & "
   spawn "nm-applet &"
 
 
@@ -52,10 +47,10 @@ main = do
         conky <- spawnPipe myDzenConky    -- xmonad status on the left
         xmonad $ ewmh $ docks defaultConfig 
             { modMask            = mod4Mask
-            , terminal           = "xfce4-terminal"
-            , borderWidth        = 2
+            , terminal           = "qterminal"
+            , borderWidth        = 4
             , normalBorderColor  = "#eee"
-            , focusedBorderColor = "#ff41fb"
+            , focusedBorderColor = "#c7f3ef"
             , handleEventHook    = fullscreenEventHook <+>
                                    handleEventHook def
             , workspaces = ["1","2","3","4","5"]
@@ -73,11 +68,9 @@ main = do
 -- the default layout is fullscreen with smartborders applied to all
 -- myLayoutHook = simplestFloat
 add_layout x = smartBorders $ avoidStruts $ x
-myLayoutHook = add_layout $ tall3 ||| tall5 ||| tall1 ||| tall2
+myLayoutHook = add_layout $ tall3 ||| tall1 
   where -- tall2 = reflectHoriz $ TwoPane (3/100) (1/2);
         tall3 = reflectHoriz $ ResizableTall 1 (3/100) (1/2) [];
-        tall2 = add_layout $ simplestFloat
-        tall5 = reflectHoriz $ ThreeCol 1 (3/100) (1/2)
         tall1 = add_layout $ Full
 
 
@@ -128,10 +121,10 @@ myLogHook h = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn h }
 
 myDzenStatus = "dzen2 -w '320' -ta 'l'" ++ myDzenStyle
 myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -ta 'r'" ++ myDzenStyle
-myDzenStyle  = " -h '20' -bg '#031318' -fn 'ubuntu:regular:size=11'"
+myDzenStyle  = " -h '20' -bg '#140415' -fn 'ubuntu:regular:size=9'"
 
 myDzenPP  = dzenPP
-    { ppCurrent = dzenColor "#7478e6" "" . wrap "<" ">"  
+    { ppCurrent = dzenColor "#dcfefd" "" . wrap "<" ">"  
     , ppHidden  = dzenColor "#fff" "" . wrap " " " "
     , ppHiddenNoWindows = dzenColor "#a6a6a6" "" . wrap " " " "
     , ppUrgent  = dzenColor "#ff0000" "" . wrap " " " "
@@ -154,7 +147,7 @@ myKeys = [ ("M-b"        , sendMessage ToggleStruts              ) -- toggle the
          , ("M-S-<Left>" , shiftToPrev                           ) -- move client to prev workspace
          , ("M-S-a"      , sendMessage MirrorShrink              )
          , ("M-S-z"      , sendMessage MirrorExpand               )
-         , ("M-p"        , spawn "gmrun"                         ) -- app launcher
+         , ("M-p"        , spawn "dmenu_run -fn 'Droid Sans Mono-9'"                         ) -- app launcher
          , ("M-r"        , spawn "xmonad --restart"              ) -- restart xmonad w/o recompiling
          , ("M-S-w"      , spawn "chromium --incognito"          ) -- launch private browser
          , ("M-e"        , spawn "thunar"                      ) -- launch file manager
