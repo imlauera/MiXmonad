@@ -8,6 +8,6 @@
 * conky
 
 **Installation**  
-1. `sudo pacman -S feh xcompmgr nm-applet stalonetray dmenu dzen2 conky`
+1. `sudo pacman -S feh xcompmgr network-manager-applet stalonetray dmenu dzen2 conky`
 2. `git clone https://github.com/aimlauer/MiXmonad ~/.xmonad`
 3. ``
