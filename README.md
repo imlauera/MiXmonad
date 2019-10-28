@@ -1,4 +1,4 @@
-## Dependencies
+**Dependencies**
 * feh
 * xcompmgr
 * nm-applet
