@@ -2,3 +2,4 @@
 xmonad-*
 *.sh
 *.hi
+*.errors
