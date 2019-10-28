@@ -37,7 +37,6 @@ myStartupHook :: X ()
 myStartupHook = do
   spawn "killall stalonetray ; stalonetray -c /home/nist778/.xmonad/.stalonetrayrc"
   spawn "feh --bg-fil /home/nist778/background/new.png &"
-  spawn "feh --bg-fil /usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png &"
   spawn "xcompmgr &" -- Podés usar compton es más pesado
   spawn "nm-applet &"
 
