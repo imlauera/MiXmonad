@@ -16,3 +16,6 @@
 1. `sudo pacman -S qterminal feh xcompmgr network-manager-applet stalonetray dmenu dzen2 conky`
 2. `git clone https://github.com/aimlauer/MiXmonad ~/.xmonad`
 3. `xmonad --recompile`
+
+## Credits
+[](https://beginners-guide-to-xmonad.readthedocs.io/configure_stalonetray.html)
