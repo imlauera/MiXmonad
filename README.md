@@ -1,4 +1,4 @@
-![](imgs/xmonad_logo.png=250x)
+![](imgs/xmonad_logo.png =250x250)
 ![](screenshots/1.png)
 
 **Dependencies**  
