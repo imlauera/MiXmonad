@@ -1,4 +1,4 @@
-<img src="assets/xmonad_logo.png" width="200"/>
+<img src="assets/xmonad_logo.png" width="50"/>
 <img src="screenshots/1.png" />
 
 **Dependencies**  
