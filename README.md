@@ -1,6 +1,8 @@
 ![](screenshots/1.png)
 
 **Dependencies**  
+* xmonad 0.15
+* qterminal
 * feh
 * xcompmgr
 * nm-applet
@@ -10,6 +12,6 @@
 * conky
 
 **Installation**  
-1. `sudo pacman -S feh xcompmgr network-manager-applet stalonetray dmenu dzen2 conky`
+1. `sudo pacman -S qterminal feh xcompmgr network-manager-applet stalonetray dmenu dzen2 conky`
 2. `git clone https://github.com/aimlauer/MiXmonad ~/.xmonad`
 3. `xmonad --recompile`
