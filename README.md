@@ -1,6 +1,6 @@
 ## Dependencies
-[ ] feh
-[ ] xcompmgr
+[1] feh
+[2] xcompmgr
 [ ] nm-applet
 [ ] stalonetray
 [ ] dmenu (dmenu_run)
