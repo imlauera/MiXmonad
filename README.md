@@ -1,3 +1,5 @@
+![](screenshots/1.png)
+
 **Dependencies**  
 * feh
 * xcompmgr
