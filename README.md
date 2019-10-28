@@ -18,4 +18,4 @@
 3. `xmonad --recompile`
 
 ## Credits
-[](https://beginners-guide-to-xmonad.readthedocs.io/configure_stalonetray.html)
+<a href="https://beginners-guide-to-xmonad.readthedocs.io/configure_stalonetray.html"/>
