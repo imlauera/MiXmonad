@@ -1,15 +1,15 @@
 ![](screenshots/1.png)
 
 **Dependencies**  
-* xmonad 0.15
-* qterminal
-* feh
-* xcompmgr
-* nm-applet
-* stalonetray
-* dmenu (dmenu_run)
-* dzen2
-* conky
+- xmonad 0.15
+- qterminal
+- feh
+- xcompmgr
+- nm-applet
+- stalonetray
+- dmenu (dmenu_run)
+- dzen2
+- conky
 
 **Installation**  
 1. `sudo pacman -S qterminal feh xcompmgr network-manager-applet stalonetray dmenu dzen2 conky`
