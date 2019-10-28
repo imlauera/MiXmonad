@@ -8,5 +8,6 @@
 * conky
 
 **Installation**  
-1. `git clone https://github.com/aimlauer/MiXmonad ~/.xmonad`
-2. ```mkdir ~/.xmonad;```
+1. `pacman -S feh xcompmgr nm-applet stalonetray dmenu dzen2 conky`
+2. `git clone https://github.com/aimlauer/MiXmonad ~/.xmonad`
+3. ``
