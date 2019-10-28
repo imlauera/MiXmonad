@@ -1,4 +1,4 @@
-**Dependencies**
+**Dependencies**  
 * feh
 * xcompmgr
 * nm-applet
@@ -7,5 +7,6 @@
 * dzen2
 * conky
 
-**Install**
-```mkdir ~/.xmonad```
+**Installation**  
+1. `git clone https://github.com/aimlauer/MiXmonad ~/.xmonad`
+2. ```mkdir ~/.xmonad;```
