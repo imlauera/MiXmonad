@@ -1,5 +1,5 @@
 <img src="assets/xmonad_logo.png" width="200"/>
-![example](screenshots/1.png)
+<img src="screenshots/1.png" />
 
 **Dependencies**  
 - xmonad 0.15
