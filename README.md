@@ -6,3 +6,6 @@
 * dmenu (dmenu_run)
 * dzen2
 * conky
+
+**Install**
+```mkdir ~/.xmonad```
