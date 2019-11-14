@@ -35,8 +35,8 @@ import qualified XMonad.StackSet as W   -- manageHook rules
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "killall stalonetray ; stalonetray -c /home/nist778/.xmonad/.stalonetrayrc"
-  spawn "feh --bg-fil /home/nist778/background/new.png &"
+  spawn "killall stalonetray ; stalonetray -c ~/.xmonad/.stalonetrayrc &"
+  spawn "feh --bg-max /home/nist778/background/new.png &"
   spawn "xcompmgr &" -- Podés usar compton es más pesado
   spawn "nm-applet &"
 
@@ -46,7 +46,7 @@ main = do
         conky <- spawnPipe myDzenConky    -- xmonad status on the left
         xmonad $ ewmh $ docks defaultConfig 
             { modMask            = mod4Mask
-            , terminal           = "qterminal"
+            , terminal           = "xfce4-terminal"
             , borderWidth        = 4
             , normalBorderColor  = "#eee"
             , focusedBorderColor = "#c7f3ef"
@@ -67,10 +67,11 @@ main = do
 -- the default layout is fullscreen with smartborders applied to all
 -- myLayoutHook = simplestFloat
 add_layout x = smartBorders $ avoidStruts $ x
-myLayoutHook = add_layout $ tall3 ||| tall1 
+myLayoutHook = add_layout $ tall3 ||| tall1 ||| simplestFloat
   where -- tall2 = reflectHoriz $ TwoPane (3/100) (1/2);
         tall3 = reflectHoriz $ ResizableTall 1 (3/100) (1/2) [];
-        tall1 = add_layout $ Full
+        tall1 = add_layout $ Full;
+        tall2 = add_layout $ ThreeCol 1 (3/100) (1/2)
 
 
 
@@ -86,7 +87,6 @@ myManageHook = composeAll
     , className =? "Android-Studio" --> doF(W.shift "3")
     , className =? "Thunderbird"    --> doF (W.shift "4")
     , className =? "XCalc"          --> doFloat
-    , className =? "Minecraft"      --> doFloat
     , className =? "Chromium"       --> doShift "2"
     , className =? "Thunar"         --> doFloat 
     , className =? "Gimp"           --> doF (W.shift "3") 
@@ -118,9 +118,9 @@ setFullscreenSupported = withDisplay $ \dpy -> do
 --
 myLogHook h = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn h }
 
-myDzenStatus = "dzen2 -w '320' -ta 'l'" ++ myDzenStyle
+myDzenStatus = "dzen2 -w '530' -ta 'l'" ++ myDzenStyle
 myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -ta 'r'" ++ myDzenStyle
-myDzenStyle  = " -h '20' -bg '#140415' -fn 'ubuntu:regular:size=9'"
+myDzenStyle  = " -h '20' -bg '#140415' -fn 'ubuntu:regular:size=10'"
 
 myDzenPP  = dzenPP
     { ppCurrent = dzenColor "#dcfefd" "" . wrap "<" ">"  
