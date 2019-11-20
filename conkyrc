@@ -13,5 +13,6 @@ use_spacer none
 
 TEXT
 ^fg(\#E0E3FF)${mem}^fg()   \
+^fg(\#E0E3FF)${cpu}^fg()   \
 ^fg(\#eee)${uptime}^fg() \
-^fg(\#fff)${time %b %d %H:%M}^fg() \
+^fg(\#FFE5FB)${time %b %d %H:%M}^fg() \

@@ -36,7 +36,7 @@ import qualified XMonad.StackSet as W   -- manageHook rules
 myStartupHook :: X ()
 myStartupHook = do
   spawn "killall stalonetray ; stalonetray -c ~/.xmonad/.stalonetrayrc &"
-  spawn "feh --bg-max /home/nist778/background/new.png &"
+  spawn "feh --bg-tile /home/nist778/background/bg.jpg &"
   spawn "xcompmgr &" -- Podés usar compton es más pesado
   spawn "nm-applet &"
 
@@ -47,9 +47,9 @@ main = do
         xmonad $ ewmh $ docks defaultConfig 
             { modMask            = mod4Mask
             , terminal           = "xfce4-terminal"
-            , borderWidth        = 4
-            , normalBorderColor  = "#eee"
-            , focusedBorderColor = "#c7f3ef"
+            , borderWidth        = 6
+            , normalBorderColor  = "#e7f0f1"
+            , focusedBorderColor = "#6DC9EC"
             , handleEventHook    = fullscreenEventHook <+>
                                    handleEventHook def
             , workspaces = ["1","2","3","4","5"]
@@ -87,6 +87,7 @@ myManageHook = composeAll
     , className =? "Android-Studio" --> doF(W.shift "3")
     , className =? "Thunderbird"    --> doF (W.shift "4")
     , className =? "XCalc"          --> doFloat
+    , className =? "Minecraft"      --> doFloat
     , className =? "Chromium"       --> doShift "2"
     , className =? "Thunar"         --> doFloat 
     , className =? "Gimp"           --> doF (W.shift "3") 
@@ -118,7 +119,7 @@ setFullscreenSupported = withDisplay $ \dpy -> do
 --
 myLogHook h = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn h }
 
-myDzenStatus = "dzen2 -w '530' -ta 'l'" ++ myDzenStyle
+myDzenStatus = "dzen2 -w '531' -ta 'l'" ++ myDzenStyle
 myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -ta 'r'" ++ myDzenStyle
 myDzenStyle  = " -h '20' -bg '#140415' -fn 'ubuntu:regular:size=10'"
 
