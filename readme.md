@@ -1,0 +1,20 @@
+### Dependencies
+
+xmonad 0.15  
+qterminal  
+feh  
+xcompmgr  
+nm-applet  
+stalonetray  
+dmenu (dmenu_run)  
+dzen2  
+conky  
+
+### Installation
+
+`sudo pacman -S lxterminal feh xcompmgr network-manager-applet stalonetray dmenu dzen2 conky`
+`git clone https://github.com/aimlauer/MiXmonad ~/.xmonad`
+`xmonad --recompile`
+
+Credits
+https://beginners-guide-to-xmonad.readthedocs.io/configure_stalonetray.html
