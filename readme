@@ -10,7 +10,7 @@ dmenu (dmenu_run)
 dzen2  
 conky  
 
-Installation
+How to install
 ------
 `sudo pacman -S lxterminal feh xcompmgr network-manager-applet stalonetray dmenu dzen2 conky`
 `git clone https://github.com/aimlauer/MiXmonad ~/.xmonad`
