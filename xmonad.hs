@@ -35,10 +35,11 @@ import qualified XMonad.StackSet as W   -- manageHook rules
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "killall stalonetray ; stalonetray -c ~/.xmonad/.stalonetrayrc &"
-  spawn "feh --bg-tile /home/nist778/background/bg.jpg &"
-  spawn "xcompmgr &" -- Podés usar compton es más pesado
+  spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
+  spawn "feh --bg-tile /home/nist778/background/red_.jpg &"
+  spawn "xcompmbgr &" -- Podés usar compton es más pesado
   spawn "nm-applet &"
+  spawn "blueman-applet &"
 
 
 main = do
@@ -46,15 +47,15 @@ main = do
         conky <- spawnPipe myDzenConky    -- xmonad status on the left
         xmonad $ ewmh $ docks defaultConfig 
             { modMask            = mod4Mask
-            , terminal           = "xfce4-terminal"
-            , borderWidth        = 6
-            , normalBorderColor  = "#e7f0f1"
-            , focusedBorderColor = "#6DC9EC"
+            , terminal           = "lxterminal"
+            , borderWidth        = 2
+            , normalBorderColor  = "#000"
+            , focusedBorderColor = "#ff0000"
             , handleEventHook    = fullscreenEventHook <+>
                                    handleEventHook def
             , workspaces = ["1","2","3","4","5"]
-            , layoutHook = smartSpacing 4 $ myLayoutHook
-            -- , manageHook = manageDocks   <+> doCenterFloat <+> myManageHook
+            , layoutHook = smartSpacing 1 $ myLayoutHook
+            --, manageHook = manageDocks   <+> doCenterFloat <+> myManageHook
             , manageHook = manageDocks   <+> myManageHook
             , startupHook = myStartupHook <+> setFullscreenSupported
             , logHook    = myLogHook status
@@ -88,7 +89,6 @@ myManageHook = composeAll
     , className =? "Thunderbird"    --> doF (W.shift "4")
     , className =? "XCalc"          --> doFloat
     , className =? "Minecraft"      --> doFloat
-    , className =? "Chromium"       --> doShift "2"
     , className =? "Thunar"         --> doFloat 
     , className =? "Gimp"           --> doF (W.shift "3") 
     ]
@@ -121,10 +121,10 @@ myLogHook h = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn h }
 
 myDzenStatus = "dzen2 -w '531' -ta 'l'" ++ myDzenStyle
 myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -ta 'r'" ++ myDzenStyle
-myDzenStyle  = " -h '20' -bg '#140415' -fn 'ubuntu:regular:size=10'"
+myDzenStyle  = " -h '20' -bg '#000' -fn 'ubuntu:regular:size=12'"
 
 myDzenPP  = dzenPP
-    { ppCurrent = dzenColor "#dcfefd" "" . wrap "<" ">"  
+    { ppCurrent = dzenColor "#dcfefd" "" . wrap "" "*"  
     , ppHidden  = dzenColor "#fff" "" . wrap " " " "
     , ppHiddenNoWindows = dzenColor "#a6a6a6" "" . wrap " " " "
     , ppUrgent  = dzenColor "#ff0000" "" . wrap " " " "
@@ -145,9 +145,11 @@ myKeys = [ ("M-b"        , sendMessage ToggleStruts              ) -- toggle the
          , ("M-<Left>"   , prevWS                                ) -- go to prev workspace
          , ("M-S-<Right>", shiftToNext                           ) -- move client to next workspace
          , ("M-S-<Left>" , shiftToPrev                           ) -- move client to prev workspace
+         , ("M-h"        , sendMessage Expand                    ) -- Expand the master area (with the reflectHoriz the master area is on the right side)
+         , ("M-l"        , sendMessage Shrink                    ) -- Shrink the master area (the keybindings swapped cause I use reflectHoriz)
          , ("M-S-a"      , sendMessage MirrorShrink              )
          , ("M-S-z"      , sendMessage MirrorExpand               )
-         , ("M-p"        , spawn "dmenu_run -fn 'Droid Sans Mono-9'"                         ) -- app launcher
+         , ("M-p"        , spawn "dmenu_run -nb black -sb 'red'"                         ) -- app launcher
          , ("M-r"        , spawn "xmonad --restart"              ) -- restart xmonad w/o recompiling
          , ("M-S-w"      , spawn "chromium --incognito"          ) -- launch private browser
          , ("M-e"        , spawn "thunar"                      ) -- launch file manager
