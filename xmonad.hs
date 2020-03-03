@@ -36,8 +36,13 @@ import qualified XMonad.StackSet as W   -- manageHook rules
 myStartupHook :: X ()
 myStartupHook = do
   spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
+<<<<<<< HEAD
   spawn "feh --bg-tile /home/nist778/background/red_.jpg &"
   spawn "xcompmbgr &" -- Podés usar compton es más pesado
+=======
+  spawn "feh --bg-tile /home/nist778/backgrounds/red.jpg &"
+  spawn "xcompmgr &" -- Podés usar compton es más pesado
+>>>>>>> c64897a3ebe3546c5ddd755fab56386dd7a41169
   spawn "nm-applet &"
   spawn "blueman-applet &"
 
