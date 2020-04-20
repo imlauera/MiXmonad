@@ -36,14 +36,10 @@ import qualified XMonad.StackSet as W   -- manageHook rules
 myStartupHook :: X ()
 myStartupHook = do
   spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
-<<<<<<< HEAD
-  spawn "feh --bg-tile /home/nist778/background/red_.jpg &"
-  spawn "xcompmbgr &" -- Podés usar compton es más pesado
-=======
-  spawn "feh --bg-tile /home/nist778/backgrounds/red.jpg &"
+  spawn "feh --bg-fil /home/nist778/Imágenes/pantsu/wide/tits.jpg &"
   spawn "xcompmgr &" -- Podés usar compton es más pesado
->>>>>>> c64897a3ebe3546c5ddd755fab56386dd7a41169
   spawn "nm-applet &"
+  spawn "xscreensaver-command -exit;  xscreensaver -no-splash & "
   spawn "blueman-applet &"
 
 
@@ -54,12 +50,12 @@ main = do
             { modMask            = mod4Mask
             , terminal           = "lxterminal"
             , borderWidth        = 2
-            , normalBorderColor  = "#000"
+            , normalBorderColor  = "#222"
             , focusedBorderColor = "#ff0000"
             , handleEventHook    = fullscreenEventHook <+>
                                    handleEventHook def
             , workspaces = ["1","2","3","4","5"]
-            , layoutHook = smartSpacing 1 $ myLayoutHook
+            , layoutHook = smartSpacing 2 $ myLayoutHook
             --, manageHook = manageDocks   <+> doCenterFloat <+> myManageHook
             , manageHook = manageDocks   <+> myManageHook
             , startupHook = myStartupHook <+> setFullscreenSupported
@@ -73,11 +69,11 @@ main = do
 -- the default layout is fullscreen with smartborders applied to all
 -- myLayoutHook = simplestFloat
 add_layout x = smartBorders $ avoidStruts $ x
-myLayoutHook = add_layout $ tall3 ||| tall1 ||| simplestFloat
+myLayoutHook = add_layout $ tall3 ||| tall1 ||| simplestFloat 
   where -- tall2 = reflectHoriz $ TwoPane (3/100) (1/2);
         tall3 = reflectHoriz $ ResizableTall 1 (3/100) (1/2) [];
-        tall1 = add_layout $ Full;
-        tall2 = add_layout $ ThreeCol 1 (3/100) (1/2)
+        tall1 = Full;
+        -- tall5 = ThreeColMid 1 (3/100) (1/2)
 
 
 
@@ -92,6 +88,7 @@ myManageHook = composeAll
     , className =? "Gnuplot_x11"    --> doCenterFloat
     , className =? "Android-Studio" --> doF(W.shift "3")
     , className =? "Thunderbird"    --> doF (W.shift "4")
+    , className =? "XCalc"          --> doFloat
     , className =? "XCalc"          --> doFloat
     , className =? "Minecraft"      --> doFloat
     , className =? "Thunar"         --> doFloat 
@@ -154,10 +151,11 @@ myKeys = [ ("M-b"        , sendMessage ToggleStruts              ) -- toggle the
          , ("M-l"        , sendMessage Shrink                    ) -- Shrink the master area (the keybindings swapped cause I use reflectHoriz)
          , ("M-S-a"      , sendMessage MirrorShrink              )
          , ("M-S-z"      , sendMessage MirrorExpand               )
-         , ("M-p"        , spawn "dmenu_run -nb black -sb 'red'"                         ) -- app launcher
+         , ("M-p"        , spawn "dmenu_run -nb black -sb 'purple'"                         ) -- app launcher
          , ("M-r"        , spawn "xmonad --restart"              ) -- restart xmonad w/o recompiling
          , ("M-S-w"      , spawn "chromium --incognito"          ) -- launch private browser
          , ("M-e"        , spawn "thunar"                      ) -- launch file manager
+         , ("M-S-l"        , spawn "xscreensaver-command -lock"         ) -- launch file manager
          , ("C-M1-l"     , spawn "gnome-screensaver-command --lock"              ) -- lock screen
          , ("M-s"        , spawn "urxvtcd -e bash -c 'screen -dRR -S $HOSTNAME'" ) 
          -- launch screen session
