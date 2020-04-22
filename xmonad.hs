@@ -36,7 +36,7 @@ import qualified XMonad.StackSet as W   -- manageHook rules
 myStartupHook :: X ()
 myStartupHook = do
   spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
-  spawn "feh --bg-fil /home/nist778/Imágenes/pantsu/wide/tits.jpg &"
+  spawn "feh --bg-fil /home/nist778/Imágenes/wallpapers/dark_green.jpg &"
   spawn "xcompmgr &" -- Podés usar compton es más pesado
   spawn "nm-applet &"
   spawn "xscreensaver-command -exit;  xscreensaver -no-splash & "
@@ -51,7 +51,7 @@ main = do
             , terminal           = "lxterminal"
             , borderWidth        = 2
             , normalBorderColor  = "#222"
-            , focusedBorderColor = "#ff0000"
+            , focusedBorderColor = "#898663"
             , handleEventHook    = fullscreenEventHook <+>
                                    handleEventHook def
             , workspaces = ["1","2","3","4","5"]
