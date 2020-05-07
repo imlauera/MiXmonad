@@ -15,10 +15,10 @@ main = do
         xmonad $ docks defaultConfig
             { borderWidth        = 2
             , terminal           = "lxterminal"
-            , normalBorderColor  = "#cccccc"
+            , normalBorderColor  = "#444"
             , focusedBorderColor = "red"
             , workspaces = ["1","2","3","4","5","6"]
-            , manageHook = manageDocks <+> manageHook defaultConfig
+            , manageHook = manageHook defaultConfig
             , layoutHook =  avoidStruts $ layoutHook defaultConfig
             , modMask = mod4Mask     -- Rebind Mod to the Windows key
             , startupHook = myStartupHook
