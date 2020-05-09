@@ -1,6 +1,6 @@
 transparent false
 dockapp_mode none
-geometry 4x1-300+0
+geometry 5x1-300+0
 background "#000"
 kludges force_icons_size
-icon_size 15
+icon_size 10

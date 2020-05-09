@@ -57,7 +57,7 @@ main = do
             , workspaces = ["1","2","3","4","5"]
             , layoutHook = smartSpacing 2 $ myLayoutHook
             --, manageHook = manageDocks   <+> doCenterFloat <+> myManageHook
-            , manageHook = manageDocks   <+> myManageHook
+            , manageHook = manageDocks <+> myManageHook
             , startupHook = myStartupHook <+> setFullscreenSupported
             , logHook    = myLogHook status
             } 
