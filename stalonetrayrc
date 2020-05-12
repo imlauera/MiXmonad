@@ -1,6 +1,14 @@
 transparent false
 dockapp_mode none
 geometry 5x1-300+0
+max_geometry 0x0
 background "#000"
 kludges force_icons_size
 icon_size 10
+grow_gravity NE
+icon_gravity NE
+icon_size 12
+sticky true
+window_type dock
+window_layer bottom
+skip_taskbar true

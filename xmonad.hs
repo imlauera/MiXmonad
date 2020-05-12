@@ -31,7 +31,7 @@ main = do
 
 myDzenStatus = "dzen2 -w '531' -ta 'l'" ++ myDzenStyle
 myDzenConky  = "conky -c ~/nist778/ActualXmonad/conkyrc | dzen2 -x '320' -ta 'r'" ++ myDzenStyle
-myDzenStyle  = " -h '15' -bg '#000' -fn 'ubuntu:regular:size=8'"
+myDzenStyle  = " -h '17' -bg '#000' -fn 'ubuntu:regular:size=8'"
 
 myDzenPP  = dzenPP
     { ppCurrent = dzenColor "white" "" . wrap " " " "
@@ -46,21 +46,11 @@ myManageHook = composeAll
     [
      className =? "MPlayer"        --> doFloat
     , className =? "Vlc"            --> doFloat
-    , className =? "Gnuplot_qt"     --> doCenterFloat
-    , className =? "Gnuplot"        --> doCenterFloat
-    , className =? "Gnuplot_x11"    --> doCenterFloat
-    , className =? "Android-Studio" --> doF(W.shift "3")
-    , className =? "Thunderbird"    --> doF (W.shift "4")
+    , className =? "Thunderbird"    --> doF (W.shift "3")
     , className =? "XCalc"          --> doFloat
-    , className =? "XCalc"          --> doFloat
-    , className =? "Minecraft"      --> doFloat
+    , className =? "Galculator"     --> doFloat
     , className =? "Thunar"         --> doFloat 
-    , className =? "Gimp"           --> doF (W.shift "3") 
     ]
-
-
-
-
 
 myStartupHook :: X ()
 myStartupHook = do
