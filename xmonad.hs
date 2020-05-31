@@ -19,12 +19,12 @@ main = do
         info <- spawnPipe myDzenConky
         xmonad $ ewmh $docks defaultConfig
             { borderWidth        = 3
-            , terminal           = "lxterminal"
-            , normalBorderColor  = "#e1e1e1"
-            , focusedBorderColor = "#FFCCE5"
-            , workspaces = ["1","2","3","4","5","6"]
+            , terminal           = "xfce4-terminal"
+            , normalBorderColor  = "#e2edf1"
+            , focusedBorderColor = "#d497ea"
+            , workspaces = ["1","2","3","4","5","6","7","8","9"]
             , manageHook = manageDocks <+> myManageHook
-            , layoutHook = spacing 10 $ avoidStruts $ layoutHook defaultConfig
+            , layoutHook = spacing 8 $ avoidStruts $ layoutHook defaultConfig
             , modMask = mod4Mask     -- Rebind Mod to the Windows key
             , startupHook = myStartupHook 
             , logHook    = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn status }
@@ -51,9 +51,10 @@ myManageHook = composeAll
     , className =? "XCalc"          --> doFloat
     , className =? "Galculator"     --> doFloat
     , className =? "Thunar"         --> doFloat 
-    , fmap ("Discord" `isInfixOf`) title --> doF (W.shift "6")
-    , fmap ("Steam" `isInfixOf`) title --> doF (W.shift "5")
-    , fmap ("VLC" `isInfixOf`) title --> doFloat
+    , fmap ("Discord" `isInfixOf`) title --> doF (W.shift "9")
+    , fmap ("Firefox" `isInfixOf`) title --> (doShift "1")
+    , fmap ("Steam" `isInfixOf`) title --> doF (W.shift "8")
+    , fmap ("VLC" `isInfixOf`) title --> doShift "4"
     ]
 
 myStartupHook :: X ()
@@ -76,7 +77,7 @@ myKeys = [ ("M-b"        , sendMessage ToggleStruts              ) -- toggle the
          , ("M-l"        , sendMessage Expand                    ) -- Expand the master area (the keybindings swapped cause I use reflectHoriz)
          , ("M-p"        , spawn "dmenu_run -nb black -sb white -nf white -sf red -fn 'Ubuntu'") -- app launcher
          , ("M-r"        , spawn "xmonad --restart"              ) -- restart xmonad w/o recompiling
-         , ("M-S-k"        , spawn "sh ~/nist778/scripts/get_wallpaper.sh"              ) -- restart xmonad w/o recompiling
+         , ("M-S-x"        , spawn "sh ~/nist778/scripts/get_wallpaper.sh"              ) -- restart xmonad w/o recompiling
          , ("M-e"        , spawn "thunar"                      ) -- launch file manager
          , ("M-S-l"        , spawn "xscreensaver-command -lock"         ) -- launch file manager
          , ("M-S-<Up>"     , spawn "amixer -q set -q Master 3%+") -- Volume control Up
