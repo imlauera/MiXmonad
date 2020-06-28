@@ -59,8 +59,7 @@ myManageHook = composeAll
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "sh /home/nist778/nist778/scripts/get_wallpaper.sh &"
-  --spawn "feh --bg-tile ~/Imágenes/wallpapers/aircarrier_.jpg &"
+  spawn "feh --bg-tile ~/Imágenes/wallpapers/aircarrier_.jpg &"
   spawn "killall stalonetray ; stalonetray -c ~/nist778/ActualXmonad/stalonetrayrc &"
   spawn "xcompmgr &"
   --spawn "compton &"
