@@ -18,13 +18,13 @@ main = do
         status <- spawnPipe myDzenStatus
         info <- spawnPipe myDzenConky
         xmonad $ ewmh $docks defaultConfig
-            { borderWidth        = 3
-            , terminal           = "xfce4-terminal"
-            , normalBorderColor  = "#e2edf1"
-            , focusedBorderColor = "#d497ea"
-            , workspaces = ["1","2","3","4","5","6","7","8","9"]
+            { borderWidth        = 2
+            , terminal           = "lxterminal -e tmux"
+            , normalBorderColor  = "black"
+            , focusedBorderColor = "#20a6f5"
+            , workspaces = ["1","2","3","4","5","6","7","8"]
             , manageHook = manageDocks <+> myManageHook
-            , layoutHook = spacing 8 $ avoidStruts $ layoutHook defaultConfig
+            , layoutHook = spacing 2 $ avoidStruts $ layoutHook defaultConfig
             , modMask = mod4Mask     -- Rebind Mod to the Windows key
             , startupHook = myStartupHook 
             , logHook    = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn status }
@@ -32,11 +32,11 @@ main = do
 
 
 myDzenStatus = "dzen2 -w '531' -ta 'l'" ++ myDzenStyle
-myDzenConky  = "conky -c ~/nist778/ActualXmonad/conkyrc | dzen2 -x '320' -ta 'r'" ++ myDzenStyle
+myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -ta 'r'" ++ myDzenStyle
 myDzenStyle  = " -h '17' -bg '#000' -fn 'ubuntu:regular:size=10'"
 
 myDzenPP  = dzenPP
-    { ppCurrent = dzenColor "#FFCCE5" "" . wrap " " " "
+    { ppCurrent = dzenColor "#acb5ec" "" . wrap " " " "
     , ppHidden  = dzenColor "#664" "" . wrap " " " "
     , ppLayout  = dzenColor "#aaaaaa" "" . wrap "^ca(1,xdotool key super+space)· " " ·^ca()"
     , ppTitle   = dzenColor "#a7a7a7" "" 
@@ -59,8 +59,8 @@ myManageHook = composeAll
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "feh --bg-tile ~/Imágenes/wallpapers/aircarrier_.jpg &"
-  spawn "killall stalonetray ; stalonetray -c ~/nist778/ActualXmonad/stalonetrayrc &"
+  spawn "feh --bg-fil /home/nist778/Imágenes/wide/dice2.jpg &"
+  --spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
   spawn "xcompmgr &"
   --spawn "compton &"
   spawn "xscreensaver-command -exit;  xscreensaver -no-splash & "
@@ -74,7 +74,7 @@ myKeys = [ ("M-b"        , sendMessage ToggleStruts              ) -- toggle the
          , ("M-S-<Left>" , shiftToPrev                           ) -- move client to prev workspace
          , ("M-h"        , sendMessage Shrink                    ) -- Shrink the master area (with the reflectHoriz the master area is on the right side)
          , ("M-l"        , sendMessage Expand                    ) -- Expand the master area (the keybindings swapped cause I use reflectHoriz)
-         , ("M-p"        , spawn "dmenu_run -nb black -sb white -nf white -sf red -fn 'Ubuntu'") -- app launcher
+         , ("M-p"        , spawn "dmenu_run -nb black -sb black -nf white -sf lightblue -fn 'ubuntu:size=10'") -- app launcher
          , ("M-r"        , spawn "xmonad --restart"              ) -- restart xmonad w/o recompiling
          , ("M-S-x"        , spawn "sh ~/nist778/scripts/get_wallpaper.sh"              ) -- restart xmonad w/o recompiling
          , ("M-e"        , spawn "thunar"                      ) -- launch file manager

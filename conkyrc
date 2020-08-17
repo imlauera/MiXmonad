@@ -1,18 +1,45 @@
-# ~/.conkyrc
-# Thayer Williams - http://cinderwick.ca
-# vim:nu:ai:si:et:ts=4:sw=4:ft=conkyrc:
+conky.config = {
+    alignment = 'top_left',
+    background = false,
+    border_width = 1,
+    cpu_avg_samples = 2,
+    default_color = 'pink',
+    default_outline_color = 'grey',
+    default_shade_color = 'grey',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    extra_newline = false,
+    font = 'DejaVu Sans Mono:size=12',
+    gap_x = 60,
+    gap_y = 60,
+    minimum_height = 5,
+    minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = true,
+    out_to_ncurses = false,
+    out_to_stderr = false,
+    out_to_x = false,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'desktop',
+    show_graph_range = false,
+    show_graph_scale = false,
+    stippled_borders = 0,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+}
 
-background no
-out_to_x no
-out_to_console yes
-update_interval 3
-total_run_times 0
-use_spacer none
-
-# temp, loadavg, cpu usage, cpu freq, battery, network (click launches wicd), date
-
-TEXT
-^fg(\#E0E3FF)${mem}^fg()   \
-^fg(\#E0E3FF)${cpu}^fg()   \
-^fg(\#eee)${uptime}^fg() \
-^fg(\#FFE5FB)${time %b %d %H:%M}^fg() \
+conky.text = [[
+^fg(\#666666)Uptime:$color $uptime ^fg() \
+^fg(\#777777) $color $mem/$memmax  ^fg() \
+^fg(\#dbdbcd)CPU Usage:$color $cpu% ^fg() \
+^fg(\#b5b5b5)File systems: \
+/ ${fs_used /}/${fs_size /}  ^fg() \
+^fg(\#bea8c4)Time: ${time}^fg() 
+]]
