@@ -24,7 +24,7 @@ main = do
             , focusedBorderColor = "#20a6f5"
             , workspaces = ["1","2","3","4","5","6","7","8"]
             , manageHook = manageDocks <+> myManageHook
-            , layoutHook = spacing 2 $ avoidStruts $ layoutHook defaultConfig
+            , layoutHook = spacing 5 $ avoidStruts $ layoutHook defaultConfig
             , modMask = mod4Mask     -- Rebind Mod to the Windows key
             , startupHook = myStartupHook 
             , logHook    = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn status }
@@ -59,8 +59,9 @@ myManageHook = composeAll
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "feh --bg-fil /home/nist778/Imágenes/wide/dice2.jpg &"
-  --spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
+  spawn "feh --bg-fil /home/nist778/Imágenes/wide/maccc.jpg &"
+  spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
+  spawn "killall nm-applet; nm-applet &"
   spawn "xcompmgr &"
   --spawn "compton &"
   spawn "xscreensaver-command -exit;  xscreensaver -no-splash & "
