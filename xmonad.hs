@@ -60,8 +60,6 @@ myManageHook = composeAll
 myStartupHook :: X ()
 myStartupHook = do
   spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
-  spawn "xcompmgr &"
-  --spawn "compton &"
   spawn "xscreensaver-command -exit;  xscreensaver -no-splash & "
 
 myKeys = [ ("M-b"        , sendMessage ToggleStruts              ) -- toggle the status bar gap
