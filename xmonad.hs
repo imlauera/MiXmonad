@@ -17,14 +17,16 @@ import System.IO
 main = do 
         status <- spawnPipe myDzenStatus
         info <- spawnPipe myDzenConky
-        xmonad $ ewmh $docks defaultConfig
+        --xmonad $ ewmh $docks defaultConfig
+        xmonad $ ewmh $docks def
             { borderWidth        = 2
-            , terminal           = "lxterminal -e tmux"
+            , terminal           = "st -e dvtm"
             , normalBorderColor  = "black"
             , focusedBorderColor = "#20a6f5"
             , workspaces = ["1","2","3","4","5","6","7","8"]
             , manageHook = manageDocks <+> myManageHook
-            , layoutHook = spacing 5 $ avoidStruts $ layoutHook defaultConfig
+            --, layoutHook = spacing 3 $ avoidStruts $ layoutHook defaultConfig
+            , layoutHook = spacing 3 $ avoidStruts $ layoutHook def
             , modMask = mod4Mask     -- Rebind Mod to the Windows key
             , startupHook = myStartupHook 
             , logHook    = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn status }
@@ -52,16 +54,12 @@ myManageHook = composeAll
     , className =? "Galculator"     --> doFloat
     , className =? "Thunar"         --> doFloat 
     , fmap ("Discord" `isInfixOf`) title --> doF (W.shift "9")
-    , fmap ("Firefox" `isInfixOf`) title --> (doShift "1")
-    , fmap ("Steam" `isInfixOf`) title --> doF (W.shift "8")
-    , fmap ("VLC" `isInfixOf`) title --> doShift "4"
+    , fmap ("Chromium" `isInfixOf`) title --> (doShift "3")
     ]
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "feh --bg-fil /home/nist778/Imágenes/wide/maccc.jpg &"
   spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
-  spawn "killall nm-applet; nm-applet &"
   spawn "xcompmgr &"
   --spawn "compton &"
   spawn "xscreensaver-command -exit;  xscreensaver -no-splash & "
@@ -78,8 +76,8 @@ myKeys = [ ("M-b"        , sendMessage ToggleStruts              ) -- toggle the
          , ("M-p"        , spawn "dmenu_run -nb black -sb black -nf white -sf lightblue -fn 'ubuntu:size=10'") -- app launcher
          , ("M-r"        , spawn "xmonad --restart"              ) -- restart xmonad w/o recompiling
          , ("M-S-x"        , spawn "sh ~/nist778/scripts/get_wallpaper.sh"              ) -- restart xmonad w/o recompiling
-         , ("M-e"        , spawn "thunar"                      ) -- launch file manager
+         , ("M-e"        , spawn "pcmanfm"                      ) -- launch file manager
          , ("M-S-l"        , spawn "xscreensaver-command -lock"         ) -- launch file manager
-         , ("M-S-<Up>"     , spawn "amixer -q set -q Master 3%+") -- Volume control Up
-         , ("M-S-<Down>"   , spawn "amixer -q set -q Master 3%-") -- Down
+         , ("M-S-<Up>"     , spawn "amixer -q set -q PCM 3%+") -- Volume control Up
+         , ("M-S-<Down>"   , spawn "amixer -q set -q PCM 3%-") -- Down
          ]

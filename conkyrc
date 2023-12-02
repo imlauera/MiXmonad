@@ -29,7 +29,7 @@ conky.config = {
     show_graph_range = false,
     show_graph_scale = false,
     stippled_borders = 0,
-    update_interval = 1.0,
+    update_interval = 30.0,
     uppercase = false,
     use_spacer = 'none',
     use_xft = true,
@@ -37,9 +37,10 @@ conky.config = {
 
 conky.text = [[
 ^fg(\#666666)Uptime:$color $uptime ^fg() \
-^fg(\#777777) $color $mem/$memmax  ^fg() \
-^fg(\#dbdbcd)CPU Usage:$color $cpu% ^fg() \
-^fg(\#b5b5b5)File systems: \
-/ ${fs_used /}/${fs_size /}  ^fg() \
+^fg(\#999999) $color $mem/$memmax  ^fg() \
+^fg(\#dbdbcd)CPU:$color $cpu% ^fg() \
+^fg(\#dbdbcd)Temp:$color ${hwmon 1 temp 1}°C ^fg() \
+^fg(\#b5b5b5)Disk: \
+${fs_used /}/${fs_size /}  ^fg() \
 ^fg(\#bea8c4)Time: ${time}^fg() 
 ]]
