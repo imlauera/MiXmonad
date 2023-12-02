@@ -62,6 +62,7 @@ myStartupHook = do
   spawn "killall stalonetray ; stalonetray -c ~/.xmonad/stalonetrayrc &"
   spawn "xscreensaver-command -exit;  xscreensaver -no-splash & "
 
+
 myKeys = [ ("M-b"        , sendMessage ToggleStruts              ) -- toggle the status bar gap
          , ("M-<Return>" , dwmpromote                            ) -- swap the focused window and the master window
          , ("M-<Tab>"    , toggleWS                              ) -- toggle last workspace (super-tab)
